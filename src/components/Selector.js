@@ -1,17 +1,4 @@
-import { useState } from 'react';
-import countries from '../countries';
-
-export const Selector = () => {
-  const [country, setCountry] = useState('');
-
-  const getCountryData = () => {
-    fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
-
+export const Selector = ({ countries, setCountry, getCountryData, country }) => {
   return (
     <>
       {/* 選択リスト */}
