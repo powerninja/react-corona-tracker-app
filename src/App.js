@@ -17,7 +17,6 @@ export const App = () => {
     fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data[data.length - 1]);
         setCountryData({
           date: data[data.length - 1].Date,
           newConfirmed: data[data.length - 1].Confirmed - data[data.length - 2].Confirmed,
@@ -25,13 +24,18 @@ export const App = () => {
           newRecovered: data[data.length - 1].Recovered - data[data.length - 2].Recovered,
           totalRecovered: data[data.length - 1].Recovered,
         });
-        console.log(countryData);
       });
   };
   return (
     <div className="App">
       <>
-        <TopPage countries={countries} setCountry={setCountry} getCountryData={getCountryData} country={country}></TopPage>
+        <TopPage
+          countries={countries}
+          setCountry={setCountry}
+          getCountryData={getCountryData}
+          country={country}
+          countryData={countryData}
+        ></TopPage>
         {/* {countryData} */}
       </>
     </div>
