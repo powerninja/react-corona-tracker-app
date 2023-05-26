@@ -4,10 +4,10 @@ import { Result } from '../components/Result.js';
 
 export const TopPage = ({ countries, setCountry, getCountryData, country, countryData }) => {
   return (
-    <>
+    <div className="top-page-container">
       <Title></Title>
       <Selector countries={countries} setCountry={setCountry} getCountryData={getCountryData} country={country}></Selector>
       <Result countryData={countryData}></Result>
-    </>
+    </div>
   );
 };

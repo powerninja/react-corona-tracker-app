@@ -1,6 +1,6 @@
 export const Selector = ({ countries, setCountry, getCountryData, country }) => {
   return (
-    <>
+    <div className="selector-container">
       {/* 選択リスト */}
       <select onChange={(event) => setCountry(event.target.value)}>
         <option>Select A Country</option>
@@ -11,6 +11,6 @@ export const Selector = ({ countries, setCountry, getCountryData, country }) => 
         ))}
       </select>
       {country === '' ? <></> : <button onClick={() => getCountryData()}>Get Data</button>}
-    </>
+    </div>
   );
 };
