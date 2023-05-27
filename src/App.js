@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import countries from './countries.json';
 import './App.css';
 import { TopPage } from './pages/TopPage';
@@ -27,18 +28,22 @@ export const App = () => {
       });
   };
   return (
-    <div className="App">
-      <>
-        <TopPage
-          countries={countries}
-          setCountry={setCountry}
-          getCountryData={getCountryData}
-          country={country}
-          countryData={countryData}
-        ></TopPage>
-        {/* {countryData} */}
-      </>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <TopPage
+              countries={countries}
+              setCountry={setCountry}
+              getCountryData={getCountryData}
+              country={country}
+              countryData={countryData}
+            ></TopPage>
+          }
+        ></Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
