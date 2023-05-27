@@ -42,6 +42,7 @@ export const App = () => {
             ></TopPage>
           }
         ></Route>
+        <Route path="/world" element={<p>ワールド</p>}></Route>
       </Routes>
     </BrowserRouter>
   );
