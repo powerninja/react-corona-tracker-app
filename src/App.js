@@ -4,6 +4,8 @@ import countries from './countries.json';
 import './App.css';
 import { TopPage } from './pages/TopPage';
 
+import { WorldPage } from './pages/WorldPage';
+
 export const App = () => {
   const [country, setCountry] = useState('');
   const [countryData, setCountryData] = useState({
@@ -13,6 +15,7 @@ export const App = () => {
     newRecovered: '',
     totalRecovered: '',
   });
+  const [allCountriesData, setAllCountriesData] = useState([]);
 
   const getCountryData = () => {
     fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`)
@@ -27,6 +30,13 @@ export const App = () => {
         });
       });
   };
+
+  const getAllCountriesData = () => {
+    fetch(`https://monotein-books.vercel.app/api/corona-tracker/summary`)
+      .then((res) => res.json())
+      .then((data) => setAllCountriesData(data.Countries));
+  };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -42,7 +52,10 @@ export const App = () => {
             ></TopPage>
           }
         ></Route>
-        <Route path="/world" element={<p>ワールド</p>}></Route>
+        <Route
+          path="/world"
+          element={<WorldPage getAllCountriesData={getAllCountriesData} allCountriesData={allCountriesData}></WorldPage>}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
