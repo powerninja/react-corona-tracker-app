@@ -1,4 +1,12 @@
-export const Selector = ({ countries, setCountry }) => {
+type SelectorType = {
+  countries: {
+    Country: string;
+    Slug: string;
+  }[];
+  setCountry: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const Selector = ({ countries, setCountry }: SelectorType) => {
   return (
     <div className="selector-container">
       {/* 選択リストを選択した際に、値を格納する */}
