@@ -28,13 +28,15 @@ export const App = () => {
           newRecovered: data[data.length - 1].Recovered - data[data.length - 2].Recovered,
           totalRecovered: data[data.length - 1].Recovered,
         });
-      });
+      })
+      .catch((error) => alert(`エラーが発生しました。${error}`));
   };
 
   useEffect(() => {
     fetch(`https://monotein-books.vercel.app/api/corona-tracker/summary`)
       .then((res) => res.json())
-      .then((data) => setAllCountriesData(data.Countries));
+      .then((data) => setAllCountriesData(data.Countries))
+      .catch((error) => alert(`エラーが発生しました。${error}`));
   }, []);
 
   return (
