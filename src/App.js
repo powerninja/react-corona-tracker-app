@@ -16,8 +16,10 @@ export const App = () => {
     totalRecovered: '',
   });
   const [allCountriesData, setAllCountriesData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getCountryData = () => {
+    setLoading(true);
     fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`)
       .then((res) => res.json())
       .then((data) => {
@@ -28,6 +30,7 @@ export const App = () => {
           newRecovered: data[data.length - 1].Recovered - data[data.length - 2].Recovered,
           totalRecovered: data[data.length - 1].Recovered,
         });
+        setLoading(false);
       })
       .catch((error) => alert(`エラーが発生しました。${error}`));
   };
@@ -51,6 +54,7 @@ export const App = () => {
               getCountryData={getCountryData}
               country={country}
               countryData={countryData}
+              loading={loading}
             ></TopPage>
           }
         ></Route>
