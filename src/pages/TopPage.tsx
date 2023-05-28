@@ -3,7 +3,23 @@ import { Selector } from '../components/Selector.js';
 import { Result } from '../components/Result.js';
 import { Header } from '../components/Header.js';
 
-export const TopPage = ({ countries, setCountry, countryData, loading }) => {
+type TopPageType = {
+  countries: {
+    Country: string;
+    Slug: string;
+  }[];
+  setCountry: React.Dispatch<React.SetStateAction<string>>;
+  countryData: {
+    date: string;
+    newConfirmed: number;
+    totalConfirmed: number;
+    newRecovered: number;
+    totalRecovered: number;
+  };
+  loading: boolean;
+};
+
+export const TopPage = ({ countries, setCountry, countryData, loading }: TopPageType) => {
   return (
     <div className="top-page-container">
       <div>
