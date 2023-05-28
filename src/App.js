@@ -7,7 +7,7 @@ import { TopPage } from './pages/TopPage';
 import { WorldPage } from './pages/WorldPage';
 
 export const App = () => {
-  const [country, setCountry] = useState('');
+  const [country, setCountry] = useState('japan');
   const [countryData, setCountryData] = useState({
     date: '',
     newConfirmed: '',
@@ -18,7 +18,7 @@ export const App = () => {
   const [allCountriesData, setAllCountriesData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getCountryData = () => {
+  useEffect(() => {
     setLoading(true);
     fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`)
       .then((res) => res.json())
@@ -33,7 +33,7 @@ export const App = () => {
         setLoading(false);
       })
       .catch((error) => alert(`エラーが発生しました。${error}`));
-  };
+  }, [country]);
 
   useEffect(() => {
     fetch(`https://monotein-books.vercel.app/api/corona-tracker/summary`)
@@ -47,16 +47,7 @@ export const App = () => {
       <Routes>
         <Route
           path="/"
-          element={
-            <TopPage
-              countries={countries}
-              setCountry={setCountry}
-              getCountryData={getCountryData}
-              country={country}
-              countryData={countryData}
-              loading={loading}
-            ></TopPage>
-          }
+          element={<TopPage countries={countries} setCountry={setCountry} countryData={countryData} loading={loading}></TopPage>}
         ></Route>
         <Route path="/world" element={<WorldPage allCountriesData={allCountriesData}></WorldPage>}></Route>
       </Routes>
