@@ -4,7 +4,7 @@ import { Header } from '../components/Header';
 
 export const WorldPage = ({ allCountriesData }) => {
   return (
-    <div>
+    <div className="world-page-container">
       <Header></Header>
       <Title></Title>
       <Card allCountriesData={allCountriesData}></Card>
