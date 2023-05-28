@@ -6,10 +6,12 @@ import { Header } from '../components/Header.js';
 export const TopPage = ({ countries, setCountry, getCountryData, country, countryData }) => {
   return (
     <div className="top-page-container">
-      <Header></Header>
-      <Title></Title>
-      <Selector countries={countries} setCountry={setCountry} getCountryData={getCountryData} country={country}></Selector>
-      <Result countryData={countryData}></Result>
+      <div>
+        <Header></Header>
+        <Title></Title>
+        <Selector countries={countries} setCountry={setCountry} getCountryData={getCountryData} country={country}></Selector>
+        <Result countryData={countryData}></Result>
+      </div>
     </div>
   );
 };
