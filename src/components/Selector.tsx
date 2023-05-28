@@ -1,10 +1,4 @@
-type SelectorType = {
-  countries: {
-    Country: string;
-    Slug: string;
-  }[];
-  setCountry: React.Dispatch<React.SetStateAction<string>>;
-};
+import { SelectorType } from '../types';
 
 export const Selector = ({ countries, setCountry }: SelectorType) => {
   return (

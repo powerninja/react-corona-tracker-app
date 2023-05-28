@@ -1,15 +1,6 @@
-//世界の感染状況の一覧の型を宣言
-interface SingleCountriesDataType {
-  Country: string;
-  NewConfirmed: number;
-  TotalConfirmed: number;
-}
+import { CardType } from '../types';
 
-//allCountriesDataTypeが配列であることを宣言
-interface WorldPageType {
-  allCountriesData: Array<SingleCountriesDataType>;
-}
-export const Card = ({ allCountriesData }: WorldPageType) => {
+export const Card = ({ allCountriesData }: CardType) => {
   return (
     <div className="card-container">
       {/* APIで取得した195カ国分を表示する */}

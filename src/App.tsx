@@ -3,27 +3,8 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import countries from './countries.json';
 import './App.css';
 import { TopPage } from './pages/TopPage';
-
 import { WorldPage } from './pages/WorldPage';
-
-//国ごとの感染状況にて使用する型情報を宣言
-type CountryDataType = {
-  date: string;
-  newConfirmed: number;
-  totalConfirmed: number;
-  newRecovered: number;
-  totalRecovered: number;
-};
-
-//世界の感染状況の一覧の型を宣言
-interface SingleCountriesDataType {
-  Country: string;
-  NewConfirmed: number;
-  TotalConfirmed: number;
-}
-
-//allCountriesDataTypeが配列であることを宣言
-interface AllCountriesDataTypeArray extends Array<SingleCountriesDataType> {}
+import { CountryDataType, AllCountriesDataTypeArray } from './types';
 
 export const App = () => {
   //国ごとの感染状況ページの選択リスト値を保管
