@@ -6,6 +6,7 @@ import { TopPage } from './pages/TopPage';
 
 import { WorldPage } from './pages/WorldPage';
 
+//国ごとの感染状況にて使用する型情報を宣言
 type CountryDataType = {
   date: string;
   newConfirmed: number;
@@ -13,6 +14,16 @@ type CountryDataType = {
   newRecovered: number;
   totalRecovered: number;
 };
+
+//世界の感染状況の一覧の型を宣言
+interface SingleCountriesDataType {
+  Country: string;
+  NewConfirmed: number;
+  TotalConfirmed: number;
+}
+
+//allCountriesDataTypeが配列であることを宣言
+interface AllCountriesDataTypeArray extends Array<SingleCountriesDataType> {}
 
 export const App = () => {
   //国ごとの感染状況ページの選択リスト値を保管
@@ -26,7 +37,13 @@ export const App = () => {
     totalRecovered: 0,
   });
   //世界の感染状況の一覧を保存
-  const [allCountriesData, setAllCountriesData] = useState([]);
+  const [allCountriesData, setAllCountriesData] = useState<AllCountriesDataTypeArray>([
+    {
+      Country: '',
+      NewConfirmed: 0,
+      TotalConfirmed: 0,
+    },
+  ]);
   //国ごとの感染状況を取得中にローディング画面を表示するフラグ trueの場合Loading画面が表示される
   const [loading, setLoading] = useState<boolean>(false);
 
