@@ -6,21 +6,29 @@ import { TopPage } from './pages/TopPage';
 
 import { WorldPage } from './pages/WorldPage';
 
+type CountryDataType = {
+  date: string;
+  newConfirmed: number;
+  totalConfirmed: number;
+  newRecovered: number;
+  totalRecovered: number;
+};
+
 export const App = () => {
   //国ごとの感染状況ページの選択リスト値を保管
-  const [country, setCountry] = useState('japan');
+  const [country, setCountry] = useState<string>('japan');
   //国ごとの感染状況ページにて、取得した国ごとのデータを保管
-  const [countryData, setCountryData] = useState({
+  const [countryData, setCountryData] = useState<CountryDataType>({
     date: '',
-    newConfirmed: '',
-    totalConfirmed: '',
-    newRecovered: '',
-    totalRecovered: '',
+    newConfirmed: 0,
+    totalConfirmed: 0,
+    newRecovered: 0,
+    totalRecovered: 0,
   });
   //世界の感染状況の一覧を保存
   const [allCountriesData, setAllCountriesData] = useState([]);
   //国ごとの感染状況を取得中にローディング画面を表示するフラグ trueの場合Loading画面が表示される
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   //国ごとの感染状況を取得するAPIを呼び出す
   useEffect(() => {
