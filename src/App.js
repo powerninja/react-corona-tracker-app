@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import countries from './countries.json';
 import './App.css';
@@ -31,11 +31,11 @@ export const App = () => {
       });
   };
 
-  const getAllCountriesData = () => {
+  useEffect(() => {
     fetch(`https://monotein-books.vercel.app/api/corona-tracker/summary`)
       .then((res) => res.json())
       .then((data) => setAllCountriesData(data.Countries));
-  };
+  }, []);
 
   return (
     <BrowserRouter>
@@ -52,10 +52,7 @@ export const App = () => {
             ></TopPage>
           }
         ></Route>
-        <Route
-          path="/world"
-          element={<WorldPage getAllCountriesData={getAllCountriesData} allCountriesData={allCountriesData}></WorldPage>}
-        ></Route>
+        <Route path="/world" element={<WorldPage allCountriesData={allCountriesData}></WorldPage>}></Route>
       </Routes>
     </BrowserRouter>
   );

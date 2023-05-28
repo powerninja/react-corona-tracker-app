@@ -1,9 +1,11 @@
 import { Card } from '../components/Card';
+import { Title } from '../components/Title';
 
-export const WorldPage = ({ getAllCountriesData, allCountriesData }) => {
+export const WorldPage = ({ allCountriesData }) => {
   return (
     <div>
-      <Card getAllCountriesData={getAllCountriesData} allCountriesData={allCountriesData}></Card>
+      <Title></Title>
+      <Card allCountriesData={allCountriesData}></Card>
     </div>
   );
 };
