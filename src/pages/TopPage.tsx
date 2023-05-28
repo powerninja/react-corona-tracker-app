@@ -1,7 +1,7 @@
-import { Title } from '../components/Title.js';
-import { Selector } from '../components/Selector.js';
-import { Result } from '../components/Result.js';
-import { Header } from '../components/Header.js';
+import { Title } from '../components/Title';
+import { Selector } from '../components/Selector';
+import { Result } from '../components/Result';
+import { Header } from '../components/Header';
 
 type TopPageType = {
   countries: {
