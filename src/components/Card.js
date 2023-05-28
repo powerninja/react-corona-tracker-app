@@ -1,6 +1,7 @@
 export const Card = ({ allCountriesData }) => {
   return (
     <div className="card-container">
+      {/* APIで取得した195カ国分を表示する */}
       {allCountriesData.map((singleData, index) => (
         <div key={index} className="card">
           <div>

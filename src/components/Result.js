@@ -4,6 +4,7 @@ export const Result = ({ countryData, loading }) => {
   const { date, newConfirmed, totalConfirmed, newRecovered, totalRecovered } = countryData;
   return (
     <div className="results-container">
+      {/* API読み込み中の場合,Loadingコンポーネントを表示する */}
       {loading ? (
         <Loading></Loading>
       ) : (

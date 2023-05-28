@@ -3,7 +3,7 @@ import { Selector } from '../components/Selector.js';
 import { Result } from '../components/Result.js';
 import { Header } from '../components/Header.js';
 
-export const TopPage = ({ countries, setCountry, country, countryData, loading }) => {
+export const TopPage = ({ countries, setCountry, countryData, loading }) => {
   return (
     <div className="top-page-container">
       <div>
